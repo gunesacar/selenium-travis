@@ -12,9 +12,15 @@ class Test(unittest.TestCase):
 
     def setUp(self):
         self.xvfb = os.environ.get("ENABLE_XVFB", False)
+        self.browser = os.environ.get("BROWSER", "Chrome")
         if self.xvfb:
             self.vdisplay = Xvfb(width=1280, height=720)
             self.vdisplay.start()
+        if self.browser == "Firefox":
+            self.driver = self.get_ff_driver()
+        else:
+            self.driver = self.get_chrome_driver()
+        self.load = self.driver.get
 
     def tearDown(self):
         if self.driver:
@@ -22,20 +28,20 @@ class Test(unittest.TestCase):
         if self.xvfb and self.vdisplay:
             self.vdisplay.stop()
 
-    def test_ff(self):
-        self.driver = webdriver.Firefox()
-        self.driver.get("https://www.wikipedia.org")
-        self.assertIn("Wikipedia", self.driver.title)
+    def get_ff_driver(self):
+        return webdriver.Firefox()
 
-    def test_chrome(self):
+    def get_chrome_driver(self):
         opts = Options()
         if "TRAVIS" in os.environ:  # github.com/travis-ci/travis-ci/issues/938
             opts.add_argument("--no-sandbox")
         # Fix for https://code.google.com/p/chromedriver/issues/detail?id=799
         opts.add_experimental_option("excludeSwitches",
                                      ["ignore-certificate-errors"])
-        self.driver = webdriver.Chrome(chrome_options=opts)
-        self.driver.get("https://www.wikipedia.org")
+        return webdriver.Chrome(chrome_options=opts)
+
+    def test_should_load_wikipedia(self):
+        self.load("https://www.wikipedia.org")
         self.assertIn("Wikipedia", self.driver.title)
 
 if __name__ == "__main__":
