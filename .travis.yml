@@ -8,7 +8,7 @@ before_script:
   - cd tests
 script:  ./run_selenium_tests.sh
 env:
-# based on https://github.com/travis-ci/travis-ci/issues/938#issuecomment-44506327
+# https://github.com/MoritzT/tcp-app/blob/master/components/web-animations-js/.travis.yml
   - BROWSER=Chrome-beta ARGS='-x -b Chrome -u'
   - BROWSER=Chrome-unstable ARGS='-x -b Chrome -u'
   - BROWSER=Firefox-stable ARGS='-x -b Firefox -u'
