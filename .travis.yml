@@ -7,3 +7,6 @@ before_script:
   - ./setup_travis.sh
   - cd tests
 script:  ./run_selenium_tests.sh
+env:
+  - BROWSER="Chrome"
+  - BROWSER="Firefox"
