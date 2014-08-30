@@ -12,6 +12,14 @@ echo VERSION=$VERSION
 echo "*************************"
 echo "Running $BROWSER $VERSION"
 echo "*************************"
+which google-chrome
+ls -l `which google-chrome`
+google-chrome --version
+
+which firefox
+ls -l `which firefox`
+firefox --version
+
 
 export ENABLE_XVFB=1    # run the tests headless using Xvfb. Set 0 to disable
 py.test -s selenium  # autodiscover and run the tests
