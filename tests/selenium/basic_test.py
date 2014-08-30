@@ -16,7 +16,7 @@ class Test(unittest.TestCase):
         if self.xvfb:
             self.vdisplay = Xvfb(width=1280, height=720)
             self.vdisplay.start()
-        if self.browser == "Firefox":
+        if "Firefox" in self.browser:
             self.driver = self.get_ff_driver()
         else:
             self.driver = self.get_chrome_driver()

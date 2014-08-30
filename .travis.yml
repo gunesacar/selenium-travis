@@ -8,5 +8,9 @@ before_script:
   - cd tests
 script:  ./run_selenium_tests.sh
 env:
-  - BROWSER="Chrome"
-  - BROWSER="Firefox"
+  - BROWSER=Chrome-beta ARGS='-x -b Chrome -u'
+  - BROWSER=Chrome-unstable ARGS='-x -b Chrome -u'
+  - BROWSER=Firefox-stable ARGS='-x -b Firefox -u'
+  - BROWSER=Firefox-beta ARGS='-x -b Firefox -u'
+  - BROWSER=Firefox-aurora ARGS='-x -b Firefox -u'
+
