@@ -9,9 +9,9 @@ before_script:
 script:  ./run_selenium_tests.sh
 env:
 # https://github.com/MoritzT/tcp-app/blob/master/components/web-animations-js/.travis.yml
-  - BROWSER=Chrome-beta ARGS='-x -b Chrome -u'
-  - BROWSER=Chrome-unstable ARGS='-x -b Chrome -u'
-  - BROWSER=Firefox-stable ARGS='-x -b Firefox -u'
-  - BROWSER=Firefox-beta ARGS='-x -b Firefox -u'
-  - BROWSER=Firefox-aurora ARGS='-x -b Firefox -u'
+  - BROWSER=Chrome-beta
+  - BROWSER=Chrome-unstable
+  - BROWSER=Firefox-stable
+  - BROWSER=Firefox-beta
+  - BROWSER=Firefox-aurora
 
