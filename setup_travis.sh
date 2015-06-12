@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install chromedriver
+# Install chromedriver ad Google Chrome
 
 if [ -x /usr/local/bin/chromedriver ]; then
     echo "You already have ChromeDriver installed. Skipping this step."
@@ -16,3 +16,7 @@ else
     sudo chmod a+x /usr/local/bin/chromedriver
 fi
 
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+sudo apt-get update
+sudo apt-get install google-chrome-stable
